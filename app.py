@@ -2,12 +2,13 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import joblib
+import pickle
 
 st.title("Chennai House Prediction App")
 
-model = joblib.load('reg_model.pkl')
 
+with open('reg_model.pkl', 'rb') as file:
+    loaded_model = pickle.load(file)
 
 
 
@@ -67,7 +68,7 @@ for column in data.iloc[:,68:125].columns:
 
 if st.button("Generate Prediction"):
 
-    prediction = model.predict(user_input)
+    prediction = loaded_model.predict(user_input)
     rounded_prediction = round(prediction[0], 2)
     # Display the prediction
     st.markdown(f"<h1 style='text-align: center;'>Predicted House Price: {rounded_prediction} lakhs (INR)</h1>", unsafe_allow_html=True)
