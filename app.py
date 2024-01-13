@@ -6,13 +6,12 @@ import joblib
 
 st.title("Chennai House Prediction App")
 
-# Load your trained model using joblib
-model = joblib.load('reg_model.sav')
+model = joblib.load('reg_model.pkl')
 
 
 
-# Load your CSV file into a Pandas DataFrame
-file_path = "clean_data.csv"  # Replace with the actual path to your CSV file
+
+file_path = "clean_data.csv"  
 df = pd.read_csv(file_path)
 
 data = df
@@ -66,9 +65,8 @@ for column in data.iloc[:,68:125].columns:
     else:
         user_input[column] = 0.0
 
-# Make predictions with the model
 if st.button("Generate Prediction"):
-    # Make predictions with the model
+
     prediction = model.predict(user_input)
     rounded_prediction = round(prediction[0], 2)
     # Display the prediction
