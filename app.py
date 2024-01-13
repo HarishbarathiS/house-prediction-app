@@ -20,13 +20,13 @@ data = df
 builder_data = data['builder'].value_counts()
 remove_builder = builder_data[builder_data<=10]
 data['builder'] = data['builder'].apply(lambda x: 'other' if x in remove_builder else x)
-print(len(data['builder'].unique()))
+
 
 location_data = data['location'].value_counts()
 remove_location = location_data[location_data<10]
 data['location'] = data['location'].apply(lambda x: 'other' if x in remove_location else x)
 
-print(len(data['location'].unique()))
+
 data = pd.get_dummies(df, drop_first = True)
 
 selected_columns_location = data.iloc[:,6:68]
