@@ -34,14 +34,14 @@ location_names = [column[9:] for column in selected_columns_location.columns]
 selected_columns_builder = data.iloc[:,68:125]
 builder_names = [column[8:] for column in selected_columns_builder.columns]
 
-# Extract unique labels from 'builder' and 'location' columns
+
 builder_options = np.concatenate([['Select Builder'], builder_names])
 location_options = np.concatenate([['Select Location'],location_names])
 
 area = st.number_input(r"$\textsf{\Large Area}$",min_value=0.0, value=1000.0, step=1.0)
 status = st.selectbox(r"$\textsf{\Large Status (under constuction -> 0 | ready to move -> 1)}$",options=[0,1])
 bhk = st.number_input(r"$\textsf{\Large Number of Bedrooms}$", min_value=1, value=2, step=1)
-bathroom = st.number_input(r"$\textsf{\Large Number of Bathrooms}$", min_value=0.0, value=1.0, step=0.5)
+bathroom = st.number_input(r"$\textsf{\Large Number of Bathrooms}$", min_value=0.0, value=1.0, step=1)
 age = st.number_input(r"$\textsf{\Large Age}$", min_value=0.0, value=5.0, step=1.0)
 location = st.selectbox(r"$\textsf{\Large Location}$", location_options)
 builder = st.selectbox(r"$\textsf{\Large Builder}$", builder_options)
